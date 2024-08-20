@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block title %}
+<title>Car detail</title>
+{% endblock %}
+<body>
+
+    <!-- Hero section -->
+    {% block hero %}
+    <div class="detail-hero">
+        <h1 class="heading-hero">Single Product</h1>
+    </div>
+    {% endblock %}
+
+    <!-- detail section  -->     
+    {% block shop %}
+      <div class="outer-detail-section">  
+        {% if cars %}
+        <div class="shop-detail-container">
+            <div class="img-container">
+                <div class="img-section">
+                    <img src="{{cars.image.url}}" alt="img" class="img">
+
+                    <div class="container-small">
+                        <div class="small-img">
+                            <img src="{{cars.img1.url}}" alt="imgs" class="small-img">
+                        </div>
+    
+                        <div class="small-img">
+                            <img src="{{cars.img2.url}}" alt="imgs" class="small-img">
+                        </div>
+    
+                        <div class="small-img">
+                            <img src="{{cars.img3.url}}" alt="imgs" class="small-img">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-container">
+                <div class="detail-section">
+                    <h2>{{cars.name}}</h2><br>
+                        <p><strong>Color : </strong>{{cars.color_options}}</p><br>
+                            <p><strong>Model : </strong>{{cars.model}}</p><br>
+                    <p><strong>Year : </strong>{{cars.year}}</p><br>
+                    <h2><strong>Price: </strong>{{cars.price}} <small>Rs.</small></h2><br>
+                    <button class="btn-detail">Buy Now</button><br><br>
+
+                    <div class="home-category-btn">
+                        <a href="{% url 'home' %}" class="home-btn">Go to Home</a>
+                        <a href="{% url 'category' %}" class="shop-btn">Go to Category</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endif %}
+      </div>
+    {% endblock %}
+</body>
+</html>

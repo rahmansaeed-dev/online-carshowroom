@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+<body>
+    <!-- Shop section  -->  
+    {% block shop %}
+        <div class="shop-section">
+            {% if company %}   
+                {% for com in company %}
+                    <div class="box-1 box">
+                        <div class="box-content">
+                            <h2>{{ com.name }}</h2>
+                          
+                            <div class="box-img">
+                            <img src="{{ com.office_image.url }}" alt="" class="box-img"> 
+                            </div>
+                        <a href="{% url 'company_cars' com.id %}">See more</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2>Not Available.</h2>
+            {% endif %}
+        </div>
+    {% endblock %}
+</body>
+</html>

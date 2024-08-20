@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block title %}
+<title>Category</title>
+{% endblock %}
+<body>
+        <!-- Hero section -->
+        {% block hero %}
+        <div class="hero-section">
+            <div class="container-outer">
+                <div class="container">
+                    <div class="heading1">
+                        <h1>Shop</h1><br>
+                    </div>
+                    <div class="paragraph">
+                        <p>Online Car showroom is a showroom of car, you buy different <br> type and model of cars, i offer many types of cars, Suzuki, Mehran,<br> Toyota Corola, Swift, and many more.</p><br>
+                    <button class="btn-buy">Buy Now</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+        <!-- Shop section  -->     
+        {% block shop %}
+        <div class="shop-section-container">
+            {% for car in cars %}
+            <div class="box-1 box">
+                <div class="box-content">
+                    <h2>{{ car.name }}</h2>
+                    <div class="box-img-shop">
+                        <img src="{{car.image.url}}" alt="">
+                    </div>
+                   <a href="{% url 'detail' car.id %}">Browse</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+</body>
+</html>

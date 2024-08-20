@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Hyndai</title>
+    {% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static './css/style.css' %}">
+</head>
+{% endblock %}
+
+<body>
+    <!-- Hero section -->
+    {% block hero %}
+        <div class="hero-section">
+            <div class="container-outer">
+                <div class="container">
+                    <div class="heading1">
+                        <h1>{{ company.name }}</h1><br>
+                    </div>
+                    <div class="paragraph">
+                        <p>Online Car showroom is a showroom of car, you buy different <br> type and model of cars, i offer many types of cars, Suzuki, Mehran,<br> Toyota Corola, Swift, and many more.</p><br>
+                    <button class="btn-buy">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+    
+        </div>
+    {% endblock %}
+
+    <!-- Shop section  -->     
+    {% block shop %}
+    <div class="heading-container">
+        <h1>{{ company.name }} Cars</h1>
+    </div>
+    <div class="shop-section">
+        {% for car in cars %}
+            <div class="shop-box">
+                <div class="box-content">
+                    <div class="box-img">
+                        <img src="{{car.image.url}}" alt="">
+                    </div><br>
+                    <h2>Name : {{car.name}}</h2>
+                    <h3>{{ car.name }} - {{ car.model }}</h3>
+                    <p><strong>Year:</strong> {{ car.year }}</p>
+                    <p><strong>Price:</strong> Rs.{{ car.price }}</p>
+                    <p><strong>Engine type :</strong> {{ car.engine_type }}</p>
+                    <p><strong>Transmission type :</strong> {{ car.transmission_type }}</p>
+                    <p><strong>Color option :</strong> {{ car.color_options }}</p>
+                   <a href="{% url 'detail' car.id %}">Browse</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% endblock %}
+</body>
+</html>
